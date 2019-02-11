@@ -9,9 +9,15 @@ class App extends Component {
     username:"PaulineF"
   }
 
-  changeUsernameHandler = () => {
+  switchUsernameHandler = (newName) => {
     this.setState( {
-      username:"Pauline"
+      username: newName
+    });
+  }
+
+  changeUsernameHandler = (event) => {
+    this.setState( {
+      username: event.target.value
     });
   }
 
@@ -19,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <UserOutput username={this.state.username}></UserOutput>
-        <UserInput click={this.changeUsernameHandler}></UserInput>
+        <UserInput changed={this.changeUsernameHandler} click={this.switchUsernameHandler.bind(this, 'Pauline!')}></UserInput>
       </div>
     );
   }
